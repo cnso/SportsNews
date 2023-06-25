@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SportsNews</string>
+    <string name="user_title">用户隐私政策</string>
+    <string name="user_context">欢迎您使用每日新闻！我们将通过《隐私政策》和《用户协议》在注册前务必认真阅读本协议的内容、充分理解各条款内容，如有异议，您可选择不进入每日新闻。一旦您确认本用户注册协议后，本协议即在您和每日新闻之间产生法律效力，意味着您完全同意并接受协议的条款。</string>
+    <string name="agree">同意</string>
+    <string name="leave">暂时不使用</string>
+    <string name="search_hint">体育新闻搜索</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
