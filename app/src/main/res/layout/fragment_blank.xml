@@ -12,11 +12,13 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.BlankFragment">
+        tools:context=".fragments.CategoryFragment">
 
        <androidx.recyclerview.widget.RecyclerView
+           android:layout_marginHorizontal="10dp"
+           android:background="#AFAFAF"
            android:layout_width="match_parent"
-           android:layout_height="match_parent"
+           android:layout_height="wrap_content"
            android:adapter="@{adapter}"
            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 

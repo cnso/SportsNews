@@ -6,6 +6,7 @@ import org.jash.sportsnews.model.Category
 import org.jash.sportsnews.model.Page
 import org.jash.sportsnews.model.Record
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface Service {
@@ -13,4 +14,6 @@ interface Service {
     fun getCategory():LiveData<Res<List<Category>>>
     @GET("/api/news/page")
     fun getRecord(@Query("type") type:Int, @Query("page") page:Int, @Query("size") size:Int):LiveData<Res<Page<Record>>>
+    @GET("/api/news/{top}")
+    fun getTop(@Path("top") top:String):LiveData<Res<List<Record>>>
 }
