@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import org.jash.mylibrary.logging.logging
 import org.jash.sportsnews.adapter.PageAdapter
 import org.jash.sportsnews.database.database
@@ -20,10 +21,6 @@ class NewsActivity : AppCompatActivity() {
         val binding =
             DataBindingUtil.setContentView<ActivityNewsBinding>(this, R.layout.activity_news)
         setSupportActionBar(binding.searchBar)
-//        binding.fab.setOnClickListener {
-////            Toast.makeText(this, "Toast 出来的文字出来的文字出来的文字出来的文字出来的文字出来的文字", Toast.LENGTH_SHORT).show()
-//            Snackbar.make(binding.main, "Toast 出来的文字出来的文字出来的文字出来的文字出来的文字出来的文字", Snackbar.LENGTH_LONG).show()
-//        }
         val adapter = PageAdapter(supportFragmentManager)
         binding.page.adapter = adapter
         binding.tab.setupWithViewPager(binding.page)
@@ -44,6 +41,11 @@ class NewsActivity : AppCompatActivity() {
                 logging(it)
                 Toast.makeText(this, it.msg, Toast.LENGTH_SHORT).show()
             }
+        }
+        binding.managerIcon.setOnClickListener {
+            ARouter.getInstance()
+                .build("/news/manager")
+                .navigation()
         }
 
     }

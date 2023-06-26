@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="category"
+            type="org.jash.sportsnews.model.Category" />
+        <variable
+            name="adapter"
+            type="org.jash.sportsnews.adapter.ManagerAdapter"/>
+        <import type="android.view.View"/>
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardElevation="@{adapter.editable ? 20 : 5}"
+            app:cardBackgroundColor="#C8C8C8">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="5dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                tools:text="分类1"
+                android:text="@{category.name}"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_gravity="end|top"
+                android:src="@android:drawable/ic_menu_add"
+                android:visibility="@{adapter.editable ? View.VISIBLE : View.GONE}"/>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+</layout>

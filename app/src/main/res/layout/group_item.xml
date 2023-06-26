@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="name"
+            type="java.lang.String" />
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="中文"
+        android:text="@{name}"/>
+</layout>

@@ -3,10 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-    </data>
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -15,32 +11,48 @@
 
 
         <androidx.viewpager.widget.ViewPager
+            android:id="@+id/page"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/page"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary">
+
             <com.google.android.material.search.SearchBar
                 android:id="@+id/search_bar"
-                android:hint="@string/search_hint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabSelectedTextColor="#2962FF"
-                app:tabIndicatorColor="#2962FF"
-                />
+                android:hint="@string/search_hint" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabIndicatorColor="#2962FF"
+                    app:tabSelectedTextColor="#2962FF" />
+                <ImageView
+                    android:id="@+id/manager_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:src="@android:drawable/ic_menu_sort_by_size"/>
+            </FrameLayout>
+
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.google.android.material.search.SearchView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/search_hint"
-            app:layout_anchor="@id/search_bar"/>
+            app:layout_anchor="@id/search_bar" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <data>
+
+    </data>
 </layout>

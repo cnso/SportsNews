@@ -1,7 +1,9 @@
 package org.jash.sportsnews.model
 
+import android.content.Context
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.alibaba.android.arouter.launcher.ARouter
 import java.util.Date
 
 @Entity
@@ -16,4 +18,11 @@ data class Record(
     val ntid: Int,
     val suid: Int,
     val title: String
-)
+) {
+    fun showDetail() {
+        ARouter.getInstance()
+            .build("/news/detail")
+            .withInt("id", id)
+            .navigation()
+    }
+}

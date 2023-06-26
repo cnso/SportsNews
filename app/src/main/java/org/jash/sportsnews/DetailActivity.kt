@@ -2,6 +2,7 @@ package org.jash.sportsnews
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import org.jash.sportsnews.database.database
@@ -20,6 +21,16 @@ class DetailActivity : AppCompatActivity() {
         database.getRecordDao().find(id).observe(this) {
             title = it.title
             binding.record = it
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
