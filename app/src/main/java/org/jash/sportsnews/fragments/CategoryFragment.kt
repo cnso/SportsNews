@@ -9,7 +9,7 @@ import androidx.lifecycle.LiveData
 import org.jash.mylibrary.adapter.CommonAdapter
 import org.jash.sportsnews.R
 import org.jash.sportsnews.database.database
-import org.jash.sportsnews.databinding.FragmentBlankBinding
+import org.jash.sportsnews.databinding.FragmentCategoryBinding
 import org.jash.sportsnews.model.Category
 import org.jash.sportsnews.model.Record
 import org.jash.sportsnews.network.service
@@ -26,7 +26,7 @@ private const val ARG_PARAM1 = "param1"
  * Use the [CategoryFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class CategoryFragment : Fragment(R.layout.fragment_blank) {
+class CategoryFragment : Fragment(R.layout.fragment_category) {
     // TODO: Rename and change types of parameters
     private var param1: Int? = null
     private var category: LiveData<Category>? = null
@@ -57,11 +57,8 @@ class CategoryFragment : Fragment(R.layout.fragment_blank) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bind = DataBindingUtil.bind<FragmentBlankBinding>(view)
-//        bind?.text?.text = param1
+        val bind = DataBindingUtil.bind<FragmentCategoryBinding>(view)
         bind?.adapter = adapter
-
-
     }
 
     companion object {

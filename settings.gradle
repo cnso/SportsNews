@@ -16,3 +16,6 @@ dependencyResolutionManagement {
 rootProject.name = "SportsNews"
 include ':app'
 include ':mylibrary'
+include ':video'
+include ':community'
+include ':profile'

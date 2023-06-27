@@ -7,12 +7,16 @@ import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import org.jash.community.CommunityFragment
 import org.jash.mylibrary.logging.logging
+import org.jash.profile.ProfileFragment
 import org.jash.sportsnews.adapter.PageAdapter
 import org.jash.sportsnews.database.database
 import org.jash.sportsnews.databinding.ActivityNewsBinding
+import org.jash.sportsnews.fragments.NewsFragment
 import org.jash.sportsnews.network.service
 import org.jash.sportsnews.viewmodel.MainViewModel
+import org.jash.video.VideoFragment
 
 @Route(path = "/news/main")
 class NewsActivity : AppCompatActivity() {
@@ -20,32 +24,20 @@ class NewsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding =
             DataBindingUtil.setContentView<ActivityNewsBinding>(this, R.layout.activity_news)
-        setSupportActionBar(binding.searchBar)
-        val adapter = PageAdapter(supportFragmentManager)
-        binding.page.adapter = adapter
-        binding.tab.setupWithViewPager(binding.page)
-        val viewModel by viewModels<MainViewModel>()
-        if (viewModel.categories == null) {
-            viewModel.categories = service.getCategory()
-        }
-        viewModel.categories?.observe(this) {
-            if (it.code == 0) {
-                Thread {
-                    it.data.forEach(database.getCategoryDao()::insert)
-                    runOnUiThread {
-                        adapter.data = it.data
-                    }
-                }.start()
-
-            } else {
-                logging(it)
-                Toast.makeText(this, it.msg, Toast.LENGTH_SHORT).show()
-            }
-        }
-        binding.managerIcon.setOnClickListener {
-            ARouter.getInstance()
-                .build("/news/manager")
-                .navigation()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main, NewsFragment.newInstance())
+            .commit()
+        binding.bottomMenu.setOnItemSelectedListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.main, when(it.itemId) {
+                    R.id.b_news -> NewsFragment.newInstance()
+                    R.id.b_video -> VideoFragment.newInstance()
+                    R.id.b_community -> CommunityFragment.newInstance()
+                    R.id.b_profile -> ProfileFragment.newInstance()
+                    else -> NewsFragment.newInstance()
+                })
+                .commit()
+            true
         }
 
     }

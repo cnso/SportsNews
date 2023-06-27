@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 //                    startActivity(Intent(this, NewsActivity::class.java))
                     ARouter.getInstance().build("/news/main").navigation()
                     preferences.edit().putBoolean("isFirst", false).apply()
+                    finish()
                 }
                 .setNegativeButton(R.string.leave) { _, _ ->
                     finishAffinity()
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             dialog.show()
         } else {
             ARouter.getInstance().build("/news/main").navigation()
-
+            finish()
 //            startActivity(Intent(this, NewsActivity::class.java))
         }
     }

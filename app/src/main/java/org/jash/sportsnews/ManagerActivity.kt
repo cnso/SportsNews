@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Filterable
 import androidx.databinding.DataBindingUtil
 import com.alibaba.android.arouter.facade.annotation.Route
 import org.jash.sportsnews.adapter.ManagerAdapter
@@ -30,12 +31,9 @@ class ManagerActivity : AppCompatActivity() {
 
         adapter = ManagerAdapter(list)
         binding.adapter = adapter
-        binding.text.text = if(adapter.editable.get() == true) "完成" else "编辑"
         binding.edit.setOnClickListener {
             adapter.editable.set(adapter.editable.get() != true)
-            binding.text.text = if(adapter.editable.get() == true) "完成" else "编辑"
         }
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

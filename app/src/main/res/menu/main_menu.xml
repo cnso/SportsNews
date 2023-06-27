@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/b_news"
+        android:title="新闻"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="withText"
+        android:checked="true"/>
+   <item
+       android:id="@+id/b_video"
+        android:title="视频"
+       app:showAsAction="withText"
+       android:icon="@drawable/ic_play"/>
+   <item
+        android:title=""
+        android:icon="@null"
+        android:enabled="false"/>
+   <item
+       android:id="@+id/b_community"
+        android:title="社区"
+       app:showAsAction="withText"
+
+       android:icon="@drawable/ic_chat"/>
+   <item
+       android:id="@+id/b_profile"
+        android:title="我的"
+       app:showAsAction="withText"
+
+       android:icon="@drawable/ic_emoji"/>
+</menu>

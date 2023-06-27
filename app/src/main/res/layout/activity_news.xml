@@ -2,55 +2,43 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/main"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".NewsActivity">
-
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/page"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/main"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-        <com.google.android.material.appbar.AppBarLayout
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_menu"
+            tools:context=".NewsActivity">
+        </FrameLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary">
-
-            <com.google.android.material.search.SearchBar
-                android:id="@+id/search_bar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/search_hint" />
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tab"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:tabIndicatorColor="#2962FF"
-                    app:tabSelectedTextColor="#2962FF" />
-                <ImageView
-                    android:id="@+id/manager_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end|center_vertical"
-                    android:src="@android:drawable/ic_menu_sort_by_size"/>
-            </FrameLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <com.google.android.material.search.SearchView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="@string/search_hint"
-            app:layout_anchor="@id/search_bar" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            android:id="@+id/bottom_menu"
+            app:labelVisibilityMode="labeled"
+            android:elevation="10dp"
+            app:menu="@menu/main_menu"
+            app:itemIconTint="@color/bottom_color"
+            app:itemTextColor="@color/bottom_color"
+            app:layout_constraintTop_toBottomOf="@id/main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2962FF"
+            android:src="@android:drawable/ic_menu_add"
+            app:layout_constraintCircle="@id/bottom_menu"
+            app:layout_constraintCircleAngle="0"
+            app:layout_constraintCircleRadius="30dp"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <data>
 

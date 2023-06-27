@@ -49,12 +49,16 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':profile')
+    implementation project(path: ':video')
+    implementation project(path: ':community')
     def room_version = "2.5.0"
     // To use Kotlin annotation processing tool (kapt)
     kapt "androidx.room:room-compiler:$room_version"
     kapt 'com.alibaba:arouter-compiler:1.5.2'
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.activity:activity-ktx:1.7.2'
+    implementation 'androidx.fragment:fragment-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
