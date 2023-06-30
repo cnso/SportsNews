@@ -6,12 +6,12 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Filterable
 import androidx.databinding.DataBindingUtil
-import com.alibaba.android.arouter.facade.annotation.Route
+//import com.alibaba.android.arouter.facade.annotation.Route
 import org.jash.sportsnews.adapter.ManagerAdapter
 import org.jash.sportsnews.databinding.ActivityManagerBinding
-import org.jash.sportsnews.model.Category
+import org.jash.mylibrary.model.Category
 import java.util.Date
-@Route(path = "/news/manager")
+//@Route(path = "/news/manager")
 class ManagerActivity : AppCompatActivity() {
     lateinit var binding:ActivityManagerBinding
     lateinit var adapter: ManagerAdapter

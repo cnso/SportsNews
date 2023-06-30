@@ -3,7 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
 }
-
+//println "app:" + project.getName()
+//kapt {
+//    arguments {
+//        arg("AROUTER_MODULE_NAME", rootProject.getName())
+//    }
+//}
 android {
     namespace 'org.jash.sportsnews'
     compileSdk 33
@@ -18,7 +23,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
+//                arguments = [AROUTER_MODULE_NAME: rootProject.getName()]
                 arguments += [
                         "room.schemaLocation":"$projectDir/schemas".toString(),
                         "room.incremental":"true"
@@ -55,10 +60,9 @@ dependencies {
     def room_version = "2.5.0"
     // To use Kotlin annotation processing tool (kapt)
     kapt "androidx.room:room-compiler:$room_version"
-    kapt 'com.alibaba:arouter-compiler:1.5.2'
+//    kapt 'com.alibaba:arouter-compiler:1.5.2'
     implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.activity:activity-ktx:1.7.2'
-    implementation 'androidx.fragment:fragment-ktx:1.6.0'
+
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'

@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import org.jash.sportsnews.fragments.CategoryFragment
 import org.jash.sportsnews.fragments.TopFragment
-import org.jash.sportsnews.model.Category
+import org.jash.mylibrary.model.Category
 
 class PageAdapter(fragmentManager: FragmentManager):FragmentPagerAdapter(fragmentManager) {
     var data:List<Category>? = null

@@ -10,10 +10,10 @@ import androidx.databinding.DataBindingUtil
 import org.jash.mylibrary.adapter.CommonAdapter
 import org.jash.sportsnews.BR
 import org.jash.sportsnews.R
-import org.jash.sportsnews.database.database
+import org.jash.mylibrary.database.database
 import org.jash.sportsnews.databinding.FragmentTopBinding
-import org.jash.sportsnews.model.Record
-import org.jash.sportsnews.network.service
+import org.jash.mylibrary.model.Record
+import org.jash.mylibrary.network.service
 import kotlin.concurrent.thread
 
 // TODO: Rename parameter arguments, choose names that match

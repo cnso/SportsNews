@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
-import com.alibaba.android.arouter.facade.annotation.Route
-import org.jash.sportsnews.database.database
+//import com.alibaba.android.arouter.facade.annotation.Route
+import org.jash.mylibrary.database.database
 import org.jash.sportsnews.databinding.ActivityDetailBinding
 
-@Route(path = "/news/detail")
+//@Route(path = "/news/detail")
 class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="category"
-            type="org.jash.sportsnews.model.Category" />
+            type="org.jash.mylibrary.model.Category" />
         <variable
             name="adapter"
             type="org.jash.sportsnews.adapter.ManagerAdapter"/>

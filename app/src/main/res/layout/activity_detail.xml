@@ -6,7 +6,7 @@
     <data>
         <variable
             name="record"
-            type="org.jash.sportsnews.model.Record" />
+            type="org.jash.mylibrary.model.Record" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

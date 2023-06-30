@@ -8,11 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
 import org.jash.mylibrary.adapter.CommonAdapter
 import org.jash.sportsnews.R
-import org.jash.sportsnews.database.database
+import org.jash.mylibrary.database.database
 import org.jash.sportsnews.databinding.FragmentCategoryBinding
-import org.jash.sportsnews.model.Category
-import org.jash.sportsnews.model.Record
-import org.jash.sportsnews.network.service
+import org.jash.mylibrary.model.Category
+import org.jash.mylibrary.model.Record
+import org.jash.mylibrary.network.service
 import org.jash.sportsnews.BR
 import kotlin.concurrent.thread
 

@@ -1,10 +1,10 @@
-package org.jash.sportsnews.dao
+package org.jash.mylibrary.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
-import org.jash.sportsnews.model.Category
+import org.jash.mylibrary.model.Category
 @Dao
 interface CategoryDao {
     @Upsert

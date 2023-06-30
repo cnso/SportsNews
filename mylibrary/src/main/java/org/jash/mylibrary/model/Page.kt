@@ -1,4 +1,4 @@
-package org.jash.sportsnews.model
+package org.jash.mylibrary.model
 
 data class Page<T>(
     val countId: Any,

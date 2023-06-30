@@ -1,4 +1,4 @@
-package org.jash.sportsnews.model
+package org.jash.mylibrary.model
 
 import androidx.room.Dao
 import androidx.room.Entity

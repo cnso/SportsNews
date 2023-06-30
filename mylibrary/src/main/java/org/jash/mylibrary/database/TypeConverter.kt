@@ -1,4 +1,4 @@
-package org.jash.sportsnews.database
+package org.jash.mylibrary.database
 
 import androidx.room.TypeConverter
 import java.text.SimpleDateFormat

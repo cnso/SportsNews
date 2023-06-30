@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import org.jash.sportsnews.R
 import org.jash.sportsnews.BR
 import org.jash.sportsnews.databinding.CategoryItemBinding
-import org.jash.sportsnews.model.Category
+import org.jash.mylibrary.model.Category
 
 class ManagerAdapter(val data:MutableList<Any?> = mutableListOf()):Adapter<ManagerViewHolder>() {
     var index = data.indexOfLast { it is String }
@@ -53,7 +53,7 @@ class ManagerAdapter(val data:MutableList<Any?> = mutableListOf()):Adapter<Manag
                 val bind = DataBindingUtil.bind<CategoryItemBinding>(it)
                 val p = data.indexOf(bind?.category)
                 if(p < index) {
-                    val temp:Category = data.removeAt(p) as Category
+                    val temp: Category = data.removeAt(p) as Category
                     var insert =
                         data.indexOfFirst { data.indexOf(it) > index - 1 && it is Category && it.id > temp.id }
                     if (insert == -1) {

@@ -1,5 +1,6 @@
 package org.jash.sportsnews.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,13 +12,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
-import com.alibaba.android.arouter.launcher.ARouter
+//import com.alibaba.android.arouter.launcher.ARouter
 import org.jash.mylibrary.logging.logging
 import org.jash.sportsnews.R
 import org.jash.sportsnews.adapter.PageAdapter
-import org.jash.sportsnews.database.database
+import org.jash.mylibrary.database.database
 import org.jash.sportsnews.databinding.FragmentNewsBinding
-import org.jash.sportsnews.network.service
+import org.jash.mylibrary.network.service
+import org.jash.sportsnews.ManagerActivity
 import org.jash.sportsnews.viewmodel.MainViewModel
 
 class NewsFragment : Fragment(R.layout.fragment_news) {
@@ -25,7 +27,6 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     private val viewModel by activityViewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        logging("onCreate")
         if (viewModel.categories == null) {
             viewModel.categories = service.getCategory()
         }
@@ -33,7 +34,6 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        logging("onViewCreated")
         super.onViewCreated(view, savedInstanceState)
         val binding:FragmentNewsBinding? = DataBindingUtil.bind(view)
         (activity as AppCompatActivity).setSupportActionBar(binding?.searchBar)
@@ -57,9 +57,10 @@ class NewsFragment : Fragment(R.layout.fragment_news) {
             it.tab.setupWithViewPager(it.page)
 
             it.managerIcon.setOnClickListener {
-                ARouter.getInstance()
-                    .build("/news/manager")
-                    .navigation()
+//                ARouter.getInstance()
+//                    .build("/news/manager")
+//                    .navigation()
+                startActivity(Intent(context, ManagerActivity::class.java))
             }
         }
 

@@ -30,14 +30,60 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#2962FF"
-            android:src="@android:drawable/ic_menu_add"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:src="@drawable/fab_add"
             app:layout_constraintCircle="@id/bottom_menu"
             app:layout_constraintCircleAngle="0"
             app:layout_constraintCircleRadius="30dp"
             />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:id="@+id/fab_edit"
+            android:gravity="center_horizontal"
+            app:layout_constraintCircle="@id/fab"
+            app:layout_constraintCircleAngle="315"
+            app:layout_constraintCircleRadius="100dp">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.FloatingActionButton"
+                android:backgroundTint="#FF6D00"
+                android:src="@drawable/fab_edit"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="动态"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            android:id="@+id/fab_video"
+            app:layout_constraintCircle="@id/fab"
+            app:layout_constraintCircleAngle="45"
+            app:layout_constraintCircleRadius="100dp">
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.FloatingActionButton"
+                android:backgroundTint="#00C853"
+                android:src="@drawable/fab_video"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="视频"/>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <data>
