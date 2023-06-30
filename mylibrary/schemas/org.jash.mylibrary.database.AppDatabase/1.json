@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "e842ca62e2441af6adc4c7b89bd1d9fc",
+    "identityHash": "d1faace7935f0a18ecc323827935a451",
     "entities": [
       {
         "tableName": "Record",
@@ -109,12 +109,74 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`birthday` TEXT, `createTime` TEXT NOT NULL, `id` INTEGER NOT NULL, `info` TEXT, `phone` TEXT, `sex` INTEGER, `uid` INTEGER NOT NULL, `username` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "birthday",
+            "columnName": "birthday",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "createTime",
+            "columnName": "createTime",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "info",
+            "columnName": "info",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "phone",
+            "columnName": "phone",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sex",
+            "columnName": "sex",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "username",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e842ca62e2441af6adc4c7b89bd1d9fc')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd1faace7935f0a18ecc323827935a451')"
     ]
   }
 }

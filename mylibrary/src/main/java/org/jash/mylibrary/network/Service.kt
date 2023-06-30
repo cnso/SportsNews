@@ -3,6 +3,7 @@ package org.jash.mylibrary.network
 import androidx.lifecycle.LiveData
 import org.jash.mylibrary.model.Res
 import org.jash.mylibrary.model.Category
+import org.jash.mylibrary.model.Comment
 import org.jash.mylibrary.model.Page
 import org.jash.mylibrary.model.Record
 import org.jash.mylibrary.model.User
@@ -32,4 +33,9 @@ interface Service {
     fun login(@Body map: Map<String,String>):LiveData<Res<String>>
     @GET("/api/ud/detail")
     fun getUserDetail():LiveData<Res<User>>
+    @GET("/api/user/all")
+    fun getAllUser():LiveData<Res<List<User>>>
+    @GET("/api/newsComment/comments")
+    fun getCommentByNid(@Query("nid") nid:Int):LiveData<Res<List<Comment>>>
+
 }
