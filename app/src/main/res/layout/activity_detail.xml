@@ -3,31 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <variable
-            name="record"
-            type="org.jash.mylibrary.model.Record" />
-        <variable
-            name="adapter"
-            type="org.jash.mylibrary.adapter.CommonAdapter" />
-    </data>
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".DetailActivity">
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.appbar.AppBarLayout>
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/scroll"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,14 +26,85 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{record.content}"/>
+                    android:text="@{record.content}" />
+
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:adapter="@{adapter}"/>
+                    android:adapter="@{adapter}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.appbar.AppBarLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_anchor="@id/scroll"
+            app:layout_anchorGravity="bottom|center"
+            android:background="@color/white"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:imeOptions="actionDone"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:inputType="text"
+                android:id="@+id/comment_Edit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text='@={detail.comment}'
+                android:hint='@{detail.parent != null ? "回复 " + detail.parent.user.username + ":" : "评论"}'
+                android:layout_weight="1" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/ic_up"
+                android:checked="@={detail.up}"
+                android:text='@{detail.upNumber + ""}'
+                tools:text="123" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@={detail.collect}"
+                android:text='@{detail.collectNumber + ""}'
+                android:button="@drawable/ic_star"
+                tools:text="123" />
+
+            <TextView
+                android:id="@+id/comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_chat"
+                android:text='@{detail.commentNumber + ""}'
+                tools:text="123" />
+        </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <data>
+
+        <variable
+            name="record"
+            type="org.jash.mylibrary.model.Record" />
+
+        <variable
+            name="adapter"
+            type="org.jash.mylibrary.adapter.CommonAdapter" />
+        <variable
+            name="detail"
+            type="org.jash.sportsnews.model.Detail" />
+    </data>
 </layout>

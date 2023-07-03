@@ -42,6 +42,9 @@ class LoginActivity : AppCompatActivity() {
                 service.login(body).observe(this) {
                     it.takeIf { it.code == 0 }?.run {
                         token = data
+                        getSharedPreferences("first", MODE_PRIVATE)
+                            .edit().putString("token", token)
+                            .apply()
                         service.getUserDetail().observe(this@LoginActivity) {
                             logging(it)
                         }

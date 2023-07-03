@@ -37,5 +37,9 @@ interface Service {
     fun getAllUser():LiveData<Res<List<User>>>
     @GET("/api/newsComment/comments")
     fun getCommentByNid(@Query("nid") nid:Int):LiveData<Res<List<Comment>>>
+    @POST("/api/newsComment/save")
+    fun savaComment(@Body map:Map<String, String>):LiveData<Res<String?>>
+    @GET("/api/newsCollect/collect")
+    fun collect(@Query("nid") id:Int):LiveData<Res<String>>
 
 }
