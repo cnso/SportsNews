@@ -10,6 +10,8 @@ import org.jash.mylibrary.model.User
 interface UserDao {
     @Query("select * from user where id = :id")
     fun getUserById(id:Int):LiveData<User?>
+    @Query("select * from user")
+    fun getUserAll():LiveData<List<User>>
     @Upsert
     fun insertAll(vararg user: User)
 }

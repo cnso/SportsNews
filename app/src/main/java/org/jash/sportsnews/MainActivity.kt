@@ -19,7 +19,9 @@ import android.widget.Toast
 //import com.alibaba.android.arouter.launcher.ARouter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.jash.mylibrary.logging.logging
+import org.jash.mylibrary.network.service
 import org.jash.mylibrary.network.token
+import org.jash.mylibrary.network.user
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +29,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val preferences = getSharedPreferences("first", MODE_PRIVATE)
         token = preferences.getString("token", null)
+        if(token != null) {
+            logging(token)
+            service.getMyDetail().observeForever {
+                if (it.code == 0) {
+                    user = it.data
+                } else {
+                    token = null
+                    preferences.edit().remove("token").apply()
+                    Toast.makeText(this, it.msg, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
         if (preferences.getBoolean("isFirst", true)) {
             val string = resources.getString(R.string.user_context)
             val context = SpannableString(string)

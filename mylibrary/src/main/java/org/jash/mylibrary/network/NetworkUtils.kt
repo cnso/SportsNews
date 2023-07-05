@@ -3,10 +3,12 @@ package org.jash.mylibrary.network
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
+import org.jash.mylibrary.model.User
 import org.jash.mylibrary.network.LiveDataAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 var token: String? = null
+var user: User? = null
 val client = OkHttpClient.Builder()
     .addInterceptor {
         val builder = it.request().newBuilder()

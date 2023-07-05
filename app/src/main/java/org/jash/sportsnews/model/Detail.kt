@@ -13,17 +13,14 @@ class Detail(val id:Int) :BaseObservable(){
             field = value
             upNumber += if (field) 1 else -1
         }
+    @Bindable
     var collect:Boolean = false
         set(value) {
-            field = value
-            service.collect(id).observeForever {
-                if (it.code == 0) {
-                    processor.onNext(it.data)
-                } else {
-                    processor.onNext(it.msg)
-                }
+            if (field != value) {
+                collectNumber += if (value) 1 else -1
             }
-            collectNumber += if (field) 1 else -1
+            field = value
+            notifyPropertyChanged(BR.collect)
         }
     @Bindable
     var upNumber: Int = 234

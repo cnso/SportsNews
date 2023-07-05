@@ -9,6 +9,8 @@ import org.jash.mylibrary.model.Record
 import org.jash.mylibrary.model.User
 import org.jash.mylibrary.model.VideoModel
 import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -37,9 +39,25 @@ interface Service {
     fun getAllUser():LiveData<Res<List<User>>>
     @GET("/api/newsComment/comments")
     fun getCommentByNid(@Query("nid") nid:Int):LiveData<Res<List<Comment>>>
+    @GET("/api/newsComment/all.do")
+    fun getCommentAll():LiveData<Res<List<Comment>>>
     @POST("/api/newsComment/save")
     fun savaComment(@Body map:Map<String, String>):LiveData<Res<String?>>
     @GET("/api/newsCollect/collect")
     fun collect(@Query("nid") id:Int):LiveData<Res<String>>
-
+    @GET("/api/newsCollect/all.do")
+    fun getCollectAll():LiveData<Res<List<Map<String, String>>>>
+    @GET("/api/ud/detail")
+    fun getMyDetail():LiveData<Res<User>>
+    @GET("/api/newsCollect/my")
+    fun getNewsCollect():LiveData<Res<List<Record>>>
+    @GET("/api/uf/num")
+    fun getFans():LiveData<Res<Map<String, String>>>
+    @GET("/api/uf/all")
+    fun getFollowsAll():LiveData<Res<List<Map<String, String>>>>
+    @POST("/api/uf/add")
+    @FormUrlEncoded
+    fun follow(@Field("fuid") fuid:Int):LiveData<Res<String?>>
+    @GET("/api/uf/del")
+    fun followDel(@Query("fuid") fuid:Int):LiveData<Res<String?>>
 }

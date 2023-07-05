@@ -3,6 +3,9 @@
 
     <application>
         <activity
+            android:name=".UserListActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistryActivity2"
             android:exported="false" />
         <activity
@@ -10,8 +13,8 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:launchMode="singleTask"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

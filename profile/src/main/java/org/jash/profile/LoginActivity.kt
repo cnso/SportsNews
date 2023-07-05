@@ -10,6 +10,7 @@ import androidx.databinding.ObservableMap
 import org.jash.mylibrary.logging.logging
 import org.jash.mylibrary.network.service
 import org.jash.mylibrary.network.token
+import org.jash.mylibrary.network.user
 //import com.alibaba.android.arouter.facade.annotation.Route
 //import com.alibaba.android.arouter.launcher.ARouter
 import org.jash.profile.databinding.ActivityLoginBinding
@@ -47,6 +48,13 @@ class LoginActivity : AppCompatActivity() {
                             .apply()
                         service.getUserDetail().observe(this@LoginActivity) {
                             logging(it)
+                        }
+                        service.getMyDetail().observe(this@LoginActivity) {
+                            if (it.code == 0) {
+                                user = it.data
+                            } else {
+                                Toast.makeText(this@LoginActivity, it.msg, Toast.LENGTH_SHORT).show()
+                            }
                         }
                         finish()
                     }

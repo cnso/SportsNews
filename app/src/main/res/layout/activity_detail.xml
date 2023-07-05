@@ -55,6 +55,7 @@
             app:layout_anchor="@id/scroll"
             app:layout_anchorGravity="bottom|center"
             android:background="@color/white"
+            app:layout_behavior=".util.MyBehavior"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:imeOptions="actionDone"
@@ -77,6 +78,7 @@
                 tools:text="123" />
 
             <CheckBox
+                android:id="@+id/collect_Check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="@={detail.collect}"

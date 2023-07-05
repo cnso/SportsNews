@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/ic_favorite"
+        android:title="我的收藏"/>
+    <item
+        android:icon="@drawable/ic_history"
+        android:title="浏览历史"/>
+    <item
+        android:icon="@drawable/ic_edit"
+        android:title="意见反馈"/>
+    <item
+        android:icon="@drawable/ic_safety"
+        android:title="安全中心"/>
+    <item
+        android:icon="@drawable/ic_privacy"
+        android:title="隐私设置"/>
+
+</menu>

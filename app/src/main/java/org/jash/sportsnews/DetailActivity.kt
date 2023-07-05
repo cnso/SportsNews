@@ -19,6 +19,7 @@ import org.jash.mylibrary.model.Comment
 import org.jash.mylibrary.model.User
 import org.jash.mylibrary.network.service
 import org.jash.mylibrary.network.token
+import org.jash.mylibrary.network.user
 import org.jash.mylibrary.processor
 import org.jash.profile.LoginActivity
 import org.jash.sportsnews.databinding.ActivityDetailBinding
@@ -43,9 +44,29 @@ class DetailActivity : AppCompatActivity() {
         val id = intent.getIntExtra("id", 0)
         detail = Detail(id)
         binding.detail = detail
+        binding.collectCheck.setOnClickListener{
+            service.collect(id).observeForever {
+                if (it.code == 0) {
+                    processor.onNext(it.data)
+                } else {
+                    processor.onNext(it.msg)
+                }
+            }
+        }
         database.getRecordDao().find(id).observe(this) {
             title = it.title
             binding.record = it
+        }
+        service.getCollectAll().observe(this) {
+            if (it.code==0) {
+                val collect = it.data.filter { map -> map["nid"] == id.toString() }
+                if(user != null) {
+                    detail.collect = collect.filter { map -> map["uid"] == user!!.id.toString() }.isNotEmpty()
+                }
+                detail.collectNumber = collect.size
+            } else {
+                Toast.makeText(this, it.msg, Toast.LENGTH_SHORT).show()
+            }
         }
         loadComment(id)
         SafeSubscribe(
@@ -91,10 +112,15 @@ class DetailActivity : AppCompatActivity() {
                 else -> false
             }
         }
-//        if (field.get() == null) {
-//            field.set(User(null, Date(), -1, "https://gimg3.baidu.com/search/src=http%3A%2F%2Fpics0.baidu.com%2Ffeed%2F8435e5dde71190efdb1dbeef9327fa1afcfa60e0.jpeg%40f_auto%3Ftoken%3D443709dfe069ab08615bd31532484e30&refer=http%3A%2F%2Fwww.baidu.com&app=2021&size=f360,240&n=0&g=0n&q=75&fmt=auto?sec=1688230800&t=a6cebd8cad163cc3c8877f8a90a2af3a", "", "", 0, -1, "加载中"))
-//        }
+        binding.comment.setOnClickListener {
+            val a = IntArray(2)
+            binding.list.getLocationOnScreen(a)
+            val y = a[1]
+            binding.scroll.getLocationOnScreen(a)
+            val sy = a[1]
+            binding.scroll.smoothScrollBy(0, y - sy)
 
+        }
     }
     fun loadComment(id:Int) {
         service.getCommentByNid(id).observe(this) {
