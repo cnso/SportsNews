@@ -18,7 +18,7 @@ fun commentLoadUser(comments:List<Comment>, userDao: UserDao) {
                 service.getAllUser().observeForever { res ->
                     if (res.code == 0) {
                         thread { userDao.insertAll(*res.data.toTypedArray()) }
-                        val temp = res.data.find { d -> d.id == comment.uid } ?: User(null, Date(), -1, "", "", 0, 0, "用户已注销")
+                        val temp = res.data.find { d -> d.id == comment.uid } ?: User( Date(), -1, "", "", 0, 0, "用户已注销")
                         comment.user!!.set(temp)
                     }
                 }

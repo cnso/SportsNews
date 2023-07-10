@@ -32,9 +32,10 @@ import org.jash.video.VideoFragment
 
 //@Route(path = "/news/main")
 class NewsActivity : AppCompatActivity() {
+    lateinit var binding: ActivityNewsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding =
+        binding =
             DataBindingUtil.setContentView<ActivityNewsBinding>(this, R.layout.activity_news)
         supportFragmentManager.beginTransaction()
             .replace(R.id.main, NewsFragment.newInstance())
@@ -55,7 +56,7 @@ class NewsActivity : AppCompatActivity() {
                         R.id.b_profile -> ProfileFragment.newInstance()
                         else -> NewsFragment.newInstance()
                     })
-                    .commit()
+                    .commitAllowingStateLoss()
             }
 
             true
@@ -105,4 +106,14 @@ class NewsActivity : AppCompatActivity() {
 //        })
 //        return true
 //    }
+    override fun onRestart() {
+        super.onRestart()
+        if (token == null && binding.bottomMenu.selectedItemId in listOf(R.id.b_community, R.id.b_profile)) {
+//            supportFragmentManager.beginTransaction()
+//                .replace(R.id.main, NewsFragment.newInstance())
+//                .commitAllowingStateLoss()
+            binding.bottomMenu.selectedItemId = R.id.b_news
+        }
+    }
+
 }

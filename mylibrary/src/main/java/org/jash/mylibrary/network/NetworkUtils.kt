@@ -1,5 +1,6 @@
 package org.jash.mylibrary.network
 
+import androidx.databinding.ObservableField
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -22,6 +23,7 @@ val retrofit = Retrofit.Builder()
     .client(client)
     .addCallAdapterFactory(LiveDataAdapterFactory())
     .addConverterFactory(GsonConverterFactory.create(GsonBuilder()
-        .setDateFormat("YYYY-MM-dd HH:mm:ss").create()))
+        .setDateFormat("YYYY-MM-dd HH:mm:ss")
+        .create()))
     .build()
 val service = retrofit.create(Service::class.java)

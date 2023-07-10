@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item android:title="帐号设置" android:id="@+id/profile"/>
+        <item android:title="编辑资料" android:id="@+id/edit"/>
+        <item android:title="隐私设置" android:id="@+id/privacy"/>
+    </group>
+    <group>
+        <item android:title="清除缓存" android:id="@+id/clear"/>
+        <item android:title="关于我们" android:id="@+id/about"/>
+    </group>
+</menu>

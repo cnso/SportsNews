@@ -1,5 +1,6 @@
 package org.jash.profile
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -45,6 +46,7 @@ class UserListActivity : AppCompatActivity() {
                         loadUser(database.getUserDao(), uid ?: 0, user)
                     }
                 }
+
 //                database.getUserDao().getUserAll().observe(this) {
 //                    adapter += it.map {
 //                        UserFollow(ObservableBoolean(it.id in ids)).apply {
@@ -65,12 +67,16 @@ class UserListActivity : AppCompatActivity() {
                 service.getAllUser().observe(this) { res ->
                     if (res.code == 0) {
                         thread { userDao.insertAll(*res.data.toTypedArray()) }
-                        val temp = res.data.find { d -> d.id == id } ?: User(null, Date(), -1, "", "", 0, 0, "用户已注销")
+                        val temp = res.data.find { d -> d.id == id } ?: User(Date(), -1, "", "", 0, 0, "用户已注销")
                         field.set(temp)
                     }
                 }
             }
         }
 
+    }
+
+    override fun startActivityForResult(intent: Intent, requestCode: Int) {
+        super.startActivityForResult(intent, requestCode)
     }
 }

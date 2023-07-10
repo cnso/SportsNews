@@ -60,4 +60,11 @@ interface Service {
     fun follow(@Field("fuid") fuid:Int):LiveData<Res<String?>>
     @GET("/api/uf/del")
     fun followDel(@Query("fuid") fuid:Int):LiveData<Res<String?>>
+    @GET("/api/user/loginout")
+    fun logout():LiveData<Res<String?>>
+    @POST("/api/user/updatepass")
+    @FormUrlEncoded
+    fun updatePassword(@Field("password") password:String):LiveData<Res<String?>>
+    @POST("/api/ud/update")
+    fun updateProfile(@Body user: User?):LiveData<Res<Any?>>
 }

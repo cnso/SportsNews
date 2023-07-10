@@ -112,14 +112,8 @@
       },
       {
         "tableName": "User",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`birthday` TEXT, `createTime` TEXT NOT NULL, `id` INTEGER NOT NULL, `info` TEXT, `phone` TEXT, `sex` INTEGER, `uid` INTEGER NOT NULL, `username` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`createTime` TEXT NOT NULL, `id` INTEGER NOT NULL, `info` TEXT, `phone` TEXT, `sex` INTEGER, `uid` INTEGER NOT NULL, `username` TEXT NOT NULL, `birthday` TEXT, PRIMARY KEY(`id`))",
         "fields": [
-          {
-            "fieldPath": "birthday",
-            "columnName": "birthday",
-            "affinity": "TEXT",
-            "notNull": false
-          },
           {
             "fieldPath": "createTime",
             "columnName": "createTime",
@@ -161,6 +155,12 @@
             "columnName": "username",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "birthday",
+            "columnName": "birthday",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
